@@ -1,0 +1,58 @@
+name: izhiyin
+description: 一个电脑状态信息查看软件.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0-218.0.dev <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  # 自启动
+  launch_at_startup: 0.2.1
+  # 窗口管理
+  window_manager: 0.3.0
+  # 系统托盘
+  tray_manager: 0.2.0
+  # 本地存储
+  localstorage: 4.0.0+1
+  # 状态管理
+  flutter_riverpod: 2.2.0
+  # 网络信息
+  network_info_plus: 3.0.2
+  # 设备信息
+  device_info_plus: 8.1.0
+  # 执行命令行
+  process_run: 0.12.5+2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: 2.3.3
+  # 资源管理，拒绝字符串
+  flutter_gen_runner: 5.2.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/ball/
+    - assets/bird/
+    - assets/black/
+    - assets/bonfire/
+    - assets/busycat/
+    - assets/cata/
+    - assets/catb/
+    - assets/catc/
+    - assets/dance/
+    - assets/frog/
+    - assets/karbi/
+    - assets/nerve/
+    - assets/parrot/
+    - assets/party/
+    - assets/pinkcat/
+    - assets/rabit/
+    - assets/sheep/

@@ -3,8 +3,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:izhiyin/common/tray_utils.dart';
+import 'package:izhiyin/events.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:tray_manager/tray_manager.dart';
+import 'package:window_manager/window_manager.dart';
 
 class TrayWatcher extends StatefulWidget {
   final Widget child;
@@ -17,22 +19,23 @@ class TrayWatcher extends StatefulWidget {
 class _TrayWatcherState extends State<TrayWatcher> with TrayListener {
   final LocalStorage storage = LocalStorage('izhiyin');
   late Timer? _timer;
-  int _idx = 0;
   @override
   void initState() {
     super.initState();
     trayManager.addListener(this);
     intiTray();
     _timer = Timer.periodic(const Duration(minutes: 1), (timer) {});
+    // 添加事件监听
+    eventBus.on<TrayChangeEvent>().listen((event) {
+      startTimer(event.name);
+    });
   }
 
   void intiTray() async {
     // 设置系统菜单
     await traySetMenu();
     // 获取当前保存的图标类型
-    final item = await storage.getItem('runner') ?? 'black';
-    // 初始化系统托盘
-    await traySetMenu();
+    final item = await storage.getItem('runner') ?? 'auto';
     // 开启定时器
     startTimer(item);
   }
@@ -48,13 +51,11 @@ class _TrayWatcherState extends State<TrayWatcher> with TrayListener {
       _timer?.cancel();
       _timer = null;
     }
-    print("定时器 -> $_timer");
-    print("当前的索引 -> $_idx");
+    int _idx = 0;
     await storage.setItem("runner", name);
     int maxLength = getTrayIconLength(name);
-    Duration duration = Duration(milliseconds: 2000 ~/ maxLength);
+    Duration duration = Duration(milliseconds: 1500 ~/ maxLength);
     _timer = Timer.periodic(duration, (timer) async {
-      print("事件Timer -> $name $_idx");
       String trayIcon = getTrayIcon(name, _idx);
       await traySetIcon(trayIcon, name);
       if (_idx < maxLength - 1) {
@@ -73,22 +74,25 @@ class _TrayWatcherState extends State<TrayWatcher> with TrayListener {
   // 左键
   @override
   void onTrayIconMouseDown() async {
-    await trayManager.popUpContextMenu();
+    await windowManager.show();
   }
 
   // 右键
   @override
-  void onTrayIconRightMouseDown() {}
+  void onTrayIconRightMouseDown() async {
+    await trayManager.popUpContextMenu();
+  }
+
   // 菜单项
   @override
   void onTrayMenuItemClick(MenuItem menuItem) async {
-    print("menuItem -> ${menuItem.key}");
     String key = menuItem.key as String;
-    if (key == 'quite') {
-      exit(0);
-    } else {
-      _idx = 0;
-      startTimer(key);
+    switch (key) {
+      case 'open':
+        await windowManager.show();
+        break;
+      case 'quite':
+        exit(0);
     }
   }
 }

@@ -27,6 +27,9 @@ dependencies:
   device_info_plus: 8.1.0
   # 执行命令行
   process_run: 0.12.5+2
+  # 全局事件通讯
+  event_bus: 2.0.0
+  # UI 组件库
 
 dev_dependencies:
   flutter_test:
@@ -35,10 +38,13 @@ dev_dependencies:
   build_runner: 2.3.3
   # 资源管理，拒绝字符串
   flutter_gen_runner: 5.2.0
+  # 图标生成
+  icons_launcher: 2.1.0
 
 flutter:
   uses-material-design: true
   assets:
+    - assets/auto/
     - assets/ball/
     - assets/bird/
     - assets/black/

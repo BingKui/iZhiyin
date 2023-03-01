@@ -9,6 +9,38 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsAutoGen {
+  const $AssetsAutoGen();
+
+  /// File path: assets/auto/auto-0.png
+  AssetGenImage get auto0 => const AssetGenImage('assets/auto/auto-0.png');
+
+  /// File path: assets/auto/auto-1.png
+  AssetGenImage get auto1 => const AssetGenImage('assets/auto/auto-1.png');
+
+  /// File path: assets/auto/auto-2.png
+  AssetGenImage get auto2 => const AssetGenImage('assets/auto/auto-2.png');
+
+  /// File path: assets/auto/auto-3.png
+  AssetGenImage get auto3 => const AssetGenImage('assets/auto/auto-3.png');
+
+  /// File path: assets/auto/auto-4.png
+  AssetGenImage get auto4 => const AssetGenImage('assets/auto/auto-4.png');
+
+  /// File path: assets/auto/auto-5.png
+  AssetGenImage get auto5 => const AssetGenImage('assets/auto/auto-5.png');
+
+  /// File path: assets/auto/auto-6.png
+  AssetGenImage get auto6 => const AssetGenImage('assets/auto/auto-6.png');
+
+  /// File path: assets/auto/auto-7.png
+  AssetGenImage get auto7 => const AssetGenImage('assets/auto/auto-7.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [auto0, auto1, auto2, auto3, auto4, auto5, auto6, auto7];
+}
+
 class $AssetsBallGen {
   const $AssetsBallGen();
 
@@ -1020,6 +1052,7 @@ class $AssetsSheepGen {
 class Assets {
   Assets._();
 
+  static const $AssetsAutoGen auto = $AssetsAutoGen();
   static const $AssetsBallGen ball = $AssetsBallGen();
   static const $AssetsBirdGen bird = $AssetsBirdGen();
   static const $AssetsBlackGen black = $AssetsBlackGen();

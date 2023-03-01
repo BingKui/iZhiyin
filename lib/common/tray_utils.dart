@@ -10,72 +10,8 @@ Future<void> traySetMenu() async {
   // 定义托盘菜单
   final List<MenuItem> items = [
     MenuItem(
-      key: TrayIconNames.ball.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.dance.name,
-      label: "跳舞",
-    ),
-    // MenuItem(
-    //   key: TrayIconNames.black.name,
-    //   label: "小黑子",
-    // ),
-    MenuItem(
-      key: TrayIconNames.bird.name,
-      label: "鸟",
-    ),
-    MenuItem(
-      key: TrayIconNames.bonfire.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.busycat.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.cata.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.catb.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.catc.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.frog.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.karbi.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.nerve.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.parrot.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.party.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.pinkcat.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.rabit.name,
-      label: "篮球",
-    ),
-    MenuItem(
-      key: TrayIconNames.sheep.name,
-      label: "篮球",
+      key: TrayMenuKeys.open.name,
+      label: "打开",
     ),
     MenuItem(
       key: TrayMenuKeys.quit.name,
@@ -113,6 +49,8 @@ Future<void> traySetIcon(String iconPath, String name) async {
 int getTrayIconLength(String name) {
   final entry = TrayIconNames.values.firstWhere((item) => item.name == name);
   switch (entry) {
+    case TrayIconNames.auto:
+      return Assets.auto.values.length;
     case TrayIconNames.ball:
       return Assets.ball.values.length;
     case TrayIconNames.bird:
@@ -123,12 +61,12 @@ int getTrayIconLength(String name) {
       return Assets.bonfire.values.length;
     case TrayIconNames.busycat:
       return Assets.busycat.values.length;
-    case TrayIconNames.cata:
-      return Assets.cata.values.length;
-    case TrayIconNames.catb:
-      return Assets.catb.values.length;
-    case TrayIconNames.catc:
-      return Assets.catc.values.length;
+    // case TrayIconNames.cata:
+    //   return Assets.cata.values.length;
+    // case TrayIconNames.catb:
+    //   return Assets.catb.values.length;
+    // case TrayIconNames.catc:
+    //   return Assets.catc.values.length;
     case TrayIconNames.dance:
       return Assets.dance.values.length;
     case TrayIconNames.frog:
@@ -156,6 +94,8 @@ int getTrayIconLength(String name) {
 String getTrayIcon(String name, int idx) {
   final entry = TrayIconNames.values.firstWhere((item) => item.name == name);
   switch (entry) {
+    case TrayIconNames.auto:
+      return Assets.auto.values[idx].path;
     case TrayIconNames.ball:
       return Assets.ball.values[idx].path;
     case TrayIconNames.bird:
@@ -166,12 +106,12 @@ String getTrayIcon(String name, int idx) {
       return Assets.bonfire.values[idx].path;
     case TrayIconNames.busycat:
       return Assets.busycat.values[idx].path;
-    case TrayIconNames.cata:
-      return Assets.cata.values[idx].path;
-    case TrayIconNames.catb:
-      return Assets.catb.values[idx].path;
-    case TrayIconNames.catc:
-      return Assets.catc.values[idx].path;
+    // case TrayIconNames.cata:
+    //   return Assets.cata.values[idx].path;
+    // case TrayIconNames.catb:
+    //   return Assets.catb.values[idx].path;
+    // case TrayIconNames.catc:
+    //   return Assets.catc.values[idx].path;
     case TrayIconNames.dance:
       return Assets.dance.values[idx].path;
     case TrayIconNames.frog:
@@ -191,6 +131,6 @@ String getTrayIcon(String name, int idx) {
     case TrayIconNames.sheep:
       return Assets.sheep.values[idx].path;
     default:
-      return Assets.ball.ball0.path;
+      return Assets.auto.auto0.path;
   }
 }
